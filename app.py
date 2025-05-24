@@ -1,6 +1,6 @@
 import streamlit as st
 import joblib
-# import re
+import re
 from PIL import Image
 
 # Load models and vectorizer
