@@ -1,6 +1,6 @@
 import streamlit as st
 import joblib
-# import re
+import re
 from PIL import Image
 
 # Load models and vectorizer
@@ -12,8 +12,6 @@ vectorizer = joblib.load("vectorizer.pkl")
 st.set_page_config(page_title="Spam Detector", page_icon="📧", layout="centered")
 
 # Custom CSS for styling
-# Custom CSS for styling (brightened version)
-# Bright CSS for title and subtitle
 st.markdown(
     """
     <style>
@@ -21,44 +19,30 @@ st.markdown(
             background-color: #f0f2f6;
         }
         h1, h2, h3, h4, h5, h6 {
-            color: #1a1a1a;
+            color: #222;
             font-weight: bold;
-        }
-        .title {
-            color: white !important;
-            font-size: 40px;
-            font-weight: bold;
-        }
-        .subtitle {
-            color:  white !important;
-            font-size: 22px;
         }
         .stButton>button {
             width: 100%;
             border-radius: 10px;
             font-size: 18px;
-            background-color: #6c63ff;
+            background-color: #4A4A4A;
             color: white;
-            border: none;
         }
         .stTextArea>div>textarea {
             border-radius: 10px;
             font-size: 16px;
-            background-color: #ffffff;
-            color: #000000;
-            border: 1px solid #cccccc;
+            background-color: white;
+            color: black;
         }
         .not-spam {
-            color:  white !important;
+            color: black !important;
             font-weight: bold;
-            font-size: 20px;
         }
     </style>
     """,
     unsafe_allow_html=True,
 )
-
-
 
 # Initialize session state for model selection
 if "selected_model" not in st.session_state:
@@ -69,8 +53,8 @@ def set_model(model_name):
     st.session_state.selected_model = model_name
 
 # Header section
-st.markdown("<h1 class='title'>📧 Email Spam Detector</h1>", unsafe_allow_html=True)
-st.markdown("<h3 class='subtitle'>Select a model and enter text to detect spam!</h3>", unsafe_allow_html=True)
+st.markdown("""<h1 style='text-align: center;'>📧 Email Spam Detector</h1>""", unsafe_allow_html=True)
+st.write("### Select a model and enter text to detect spam!")
 
 # Model selection buttons
 col1, col2 = st.columns(2)
